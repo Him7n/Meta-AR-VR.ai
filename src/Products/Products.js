@@ -91,9 +91,9 @@ const Products = () => {
                 <div
                   key={item.id}
                   onClick={() => handleProductClick(item)}
-                  className='glassmorphism-item item-1 w-3/5 h-auto flex flex-row justify-between align-middle'
+                  className='glassmorphism-item item-1 w-3/5 h-auto flex flex-row justify-between items-center gap-4'
                 >
-                  <div className='glassmorphism-item2 flex-grow text-[12px] border-[0px] text-slate-200 rounded-md w-1/2 px-2 p-2 h-auto flex border-none justify-between flex-col bg-gray-800 hover:scale-105 hover:shadow-md translate-all duration-300'>
+                  <div className='flex flex-col p-1 bg-slate-700 rounded-md text-white justify-between w-3/5'>
                     <p className='text-[18px]'>{item.name}</p>
                     <p className='text-[12px]'>ETH: {item.price.ETH}</p>
                     <p className='text-[12px]'>₹: {item.price.Rupees}</p>
@@ -101,6 +101,13 @@ const Products = () => {
                     <p className='text-[12px]'>Stock: {item.stock} available</p>
                     <p className='text-[12px]'>Rating: {item.ratings} / 5</p>
                     <p className='text-[12px]'>Reviews: {item.reviews} reviews</p>
+                  </div>
+                  <div className='w-2/5 flex justify-center items-center'>
+                    <img
+                      className='w-[150px] h-[150px] object-cover rounded-md' // Restricting image size
+                      src={item.image}
+                      alt={item.name}
+                    />
                   </div>
                 </div>
               ))}

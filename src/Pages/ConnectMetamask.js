@@ -217,9 +217,14 @@ console.log(tokenURI)
 
 
     }
+const BuyItem = async () => {
+    const result = await hitme2(ticketId.toString());
+    if(result) return true;
+    else return false;
+}
 
 
-    const CheckTicketHandle = async () => {
+   const CheckTicketHandle = async () => {
         const result = await hitme2(ticketId.toString());
         if (result) {
             setPopupMessage('You can enter');
@@ -233,6 +238,8 @@ console.log(tokenURI)
         }, 3000);
         fetchContractData(contract);
     }
+
+
     return (<>
         <div className='text-[10px] absolute bottom-[14rem] right-52 z-10 w-[10rem] mx-auto h-[1.4rem] transition-all'>
             {_ticketChek && <button
@@ -250,7 +257,7 @@ console.log(tokenURI)
                 BuyTicket
             </button>}
 
-            <div className=' absolute bottom-[8rem] left-[22rem]' >{userTickets.length}</div>
+            <div className=' absolute bottom-[9rem] w-[10vw] left-[18rem] text-[15px]' >  Coins {userTickets.length + 5} 🪙</div>
             <div className=' text-[10px] right-[8rem] absolute bottom-[9rem]' >
                 {metamaskId}
 

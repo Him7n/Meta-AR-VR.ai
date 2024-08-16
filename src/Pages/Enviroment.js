@@ -17,6 +17,7 @@ import AskaiInput from '../Component/AskaiInput.js';
 import UpMenu from '../Component/UpMenu.js';
 import Authorize from '../Component/Authorize.js'; // Assuming this is the correct import
 import Cloths from '../Products/Cloths.js';
+import Showcase from './Showcase.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -170,6 +171,7 @@ const Enviroment = () => {
                 <AskaiInput />
                 <Sidebar />
                 <Products />
+                <Showcase/>
                 <Cloths/>
                 <VRButton />
                 <Canvas

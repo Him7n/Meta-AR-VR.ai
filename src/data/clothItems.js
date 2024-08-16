@@ -14,6 +14,7 @@ const clothItems = [
         stock: 12,
         ratings: 4.7,
         reviews: 85,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 2,
@@ -30,6 +31,7 @@ const clothItems = [
         stock: 20,
         ratings: 4.8,
         reviews: 110,
+        image: "./inventory/casual_blackfrock.png", // Updated image path
     },
     {
         id: 3,
@@ -46,6 +48,7 @@ const clothItems = [
         stock: 30,
         ratings: 4.9,
         reviews: 150,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 4,
@@ -62,6 +65,7 @@ const clothItems = [
         stock: 8,
         ratings: 4.6,
         reviews: 70,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 5,
@@ -78,6 +82,7 @@ const clothItems = [
         stock: 5,
         ratings: 4.9,
         reviews: 40,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 6,
@@ -94,6 +99,7 @@ const clothItems = [
         stock: 18,
         ratings: 4.5,
         reviews: 60,
+        image: "./inventory/casual_greenwhitehoddie.png", // Updated image path
     },
     {
         id: 7,
@@ -110,6 +116,7 @@ const clothItems = [
         stock: 22,
         ratings: 4.4,
         reviews: 50,
+        image: "./inventory/GreenShirt.png", // Updated image path
     },
     {
         id: 8,
@@ -126,6 +133,7 @@ const clothItems = [
         stock: 14,
         ratings: 4.8,
         reviews: 90,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 9,
@@ -142,6 +150,7 @@ const clothItems = [
         stock: 25,
         ratings: 4.7,
         reviews: 80,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 10,
@@ -158,6 +167,7 @@ const clothItems = [
         stock: 35,
         ratings: 4.2,
         reviews: 65,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 11,
@@ -174,6 +184,7 @@ const clothItems = [
         stock: 28,
         ratings: 4.6,
         reviews: 75,
+        image: "https://via.placeholder.com/150", // No specific image provided
     },
     {
         id: 12,
@@ -190,6 +201,7 @@ const clothItems = [
         stock: 26,
         ratings: 4.5,
         reviews: 58,
+        image: "./inventory/YellowPoloshirt.png", // Updated image path
     },
     {
         id: 13,
@@ -206,6 +218,7 @@ const clothItems = [
         stock: 50,
         ratings: 4.3,
         reviews: 100,
+        image: "./inventory/WhiteTshirt.png", // Updated image path
     },
     {
         id: 14,
@@ -222,8 +235,8 @@ const clothItems = [
         stock: 10,
         ratings: 4.9,
         reviews: 85,
+        image: "./inventory/whiteshirtwithblackleather.png", // Updated image path
     },
 ];
 
 export default clothItems;
-    

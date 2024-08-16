@@ -69,6 +69,8 @@ import StoreGuy from './Models/StoreGuy.js'
 import Cloths from './Products/Cloths.js'
 import Mannequinn from './Models/Mannequinn.js'
 import Podium from './Models/Podium.js'
+import CarPodium from './Models/CarPodium.js'
+import LeaderBoard from './Iframe/LeaderBoard.js'
 THREE.ColorManagement.legacyMode = false;
 
 
@@ -403,6 +405,8 @@ Meta-Store
 <Market/>
 <Store2/>
 <StoreGuy/>
+<CarPodium/>
+<LeaderBoard/>
             {/* <DoubtPanel /> */}
             <Classroom />
             <Mannequinn/>

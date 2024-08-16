@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = (props) => {
     const [move, setMove] = useState(false);
-    const [showProfile, setShowProfile] = useState(false); // State to control the profile panel visibility
-    const [showOrders, setShowOrders] = useState(false); // State to control the orders panel visibility
+    const [showProfile, setShowProfile] = useState(false);
+    const [showOrders, setShowOrders] = useState(false);
+    const [showInventory, setShowInventory] = useState(false); // State to control the inventory panel visibility
     const sideRef = useRef();
     const profileRef = useRef(); // Ref for the profile side panel
     const ordersRef = useRef(); // Ref for the orders side panel
+    const inventoryRef = useRef(); // Ref for the inventory side panel
     const navigate = useNavigate();
 
     const Onclick = () => {
@@ -42,6 +44,17 @@ const Sidebar = (props) => {
         });
     };
 
+    const handleInventoryClick = () => {
+        setShowInventory(true);
+        gsap.to(inventoryRef.current, { x: 0, duration: 0.3 }); // Slide in the inventory panel
+    };
+
+    const handleInventoryClose = () => {
+        gsap.to(inventoryRef.current, { x: "100%", duration: 0.3 }).then(() => {
+            setShowInventory(false); // Hide the panel after the animation completes
+        });
+    };
+
     const handleLogout = () => {
         localStorage.removeItem("token"); // Clear the token from localStorage
         navigate("/"); // Navigate to the sign-in page
@@ -68,6 +81,13 @@ const Sidebar = (props) => {
                         Orders
                     </div>
 
+                    <div
+                        className="w-full rounded-sm text-[20px] hover:bg-gray-700/10 text-gray-700/70 text-center hover:duration-150 z-10 p-[0.3rem]"
+                        onClick={handleInventoryClick} // Add onClick handler for inventory
+                    >
+                        Inventory
+                    </div>
+
                     <div className="w-full mt-16 border-b-2 border-gray-600/10 z-10"></div>
 
                     <div
@@ -81,48 +101,73 @@ const Sidebar = (props) => {
             </div>
 
             {/* Profile Side Panel */}
-             
-                <div
-                    ref={profileRef}
-                    className='fixed top-0 right-0 w-[30vw] h-full bg-gray-800 text-white p-6 z-20 translate-x-[100%]'
-                    style={{ transform: "translateX(100%)" }} // Ensure it starts off-screen
-                >
-                    <button
-                        onClick={handleProfileClose}
-                        className='text-right mb-4 text-lg'>
-                        Close
-                    </button>
-                    <h2 className='text-2xl mb-4'>Character Profile</h2>
-                    <p className='mb-2'>Name: John Doe</p>
-                    <p className='mb-2'>Role: Explorer</p>
-                    <p className='mb-2'>Level: 42</p>
-                    <p className='mb-2'>Experience: 85,000 XP</p>
-                    <p className='mb-2'>Equipment: VR Suit, Energy Sword</p>
-                </div>
-            
+            <div
+                ref={profileRef}
+                className='fixed top-0 right-0 w-[30vw] h-full bg-gray-800 text-white p-6 z-20 translate-x-[100%]'
+                style={{ transform: "translateX(100%)" }} // Ensure it starts off-screen
+            >
+                <button
+                    onClick={handleProfileClose}
+                    className='text-right mb-4 text-lg'>
+                    Close
+                </button>
+                <h2 className='text-2xl mb-4'>Character Profile</h2>
+                <p className='mb-2'>Name: John Doe</p>
+                <p className='mb-2'>Role: Explorer</p>
+                <p className='mb-2'>Level: 42</p>
+                <p className='mb-2'>Experience: 85,000 XP</p>
+                <p className='mb-2'>Equipment: VR Suit, Energy Sword</p>
+            </div>
 
             {/* Orders Side Panel */}
-             
-                <div
-                    ref={ordersRef}
-                    className='fixed top-0 right-0 w-[30vw] h-full bg-gray-800 text-white p-6 z-20 translate-x-[100%]'
-                    style={{ transform: "translateX(100%)" }} // Ensure it starts off-screen
-                >
-                    <button
-                        onClick={handleOrdersClose}
-                        className='text-right mb-4 text-lg'>
-                        Close
-                    </button>
-                    <h2 className='text-2xl mb-4'>Your Orders</h2>
-                    <ul className='list-disc ml-5'>
-                        <li className='mb-2'>Order #12345 - VR Headset</li>
-                        <li className='mb-2'>Order #12346 - VR Gloves</li>
-                        <li className='mb-2'>Order #12347 - VR Treadmill</li>
-                        <li className='mb-2'>Order #12348 - VR Suit</li>
-                        <li className='mb-2'>Order #12349 - Energy Sword</li>
-                    </ul>
+            <div
+                ref={ordersRef}
+                className='fixed top-0 right-0 w-[30vw] h-full bg-gray-800 text-white p-6 z-20 translate-x-[100%]'
+                style={{ transform: "translateX(100%)" }} // Ensure it starts off-screen
+            >
+                <button
+                    onClick={handleOrdersClose}
+                    className='text-right mb-4 text-lg'>
+                    Close
+                </button>
+                <h2 className='text-2xl mb-4'>Your Orders</h2>
+                <ul className='list-disc ml-5'>
+                    <li className='mb-2'>Order #12345 - VR Headset</li>
+                    <li className='mb-2'>Order #12346 - VR Gloves</li>
+                    <li className='mb-2'>Order #12347 - VR Treadmill</li>
+                    <li className='mb-2'>Order #12348 - VR Suit</li>
+                    <li className='mb-2'>Order #12349 - Energy Sword</li>
+                </ul>
+            </div>
+
+            {/* Inventory Side Panel */}
+            <div
+                ref={inventoryRef}
+                className='fixed top-0 right-0 w-[30vw] h-full bg-gray-800 text-white p-6 z-20 translate-x-[100%]'
+                style={{ transform: "translateX(100%)" }} // Ensure it starts off-screen
+            >
+                <button
+                    onClick={handleInventoryClose}
+                    className='text-right mb-4 text-lg'>
+                    Close
+                </button>
+                <h2 className='text-2xl mb-4'>Inventory</h2>
+                <div className='grid grid-cols-2 gap-4'>
+                    <div className='bg-gray-600 p-4 rounded'>
+                        <img src='/inventory/Blackfrock.png' alt='Black Frock' className='w-full h-auto' />
+                        <p>Black Frock</p>
+                    </div>
+                    <div className='bg-gray-600 p-4 rounded'>
+                        <img src='/inventory/GreenShirt.png' alt='Green Shirt' className='w-full h-auto' />
+                        <p>Green Shirt</p>
+                    </div>
+                    <div className='bg-gray-600 p-4 rounded'>
+                        <img src='/inventory/WhiteTshirt.png' alt='White T-Shirt' className='w-full h-auto' />
+                        <p>White T-Shirt</p>
+                    </div>
+                    {/* Add more items as needed */}
                 </div>
-            
+            </div>
         </div>
     );
 };
