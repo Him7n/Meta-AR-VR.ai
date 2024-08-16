@@ -4,7 +4,8 @@ import { Canvas } from '@react-three/fiber';
 import XrCube from './XrCube';
 import toast, { Toaster } from 'react-hot-toast';
 import { useAtom } from 'jotai';
-import { PlayerXP } from '../Utils/PlayerXP'
+import { PlayerXP } from '../Utils/PlayerXP';
+import { useBuyItem } from '../Component/useBuyItem';  // Import the hook
 
 import "./Xr.css"; // Assuming you have other styles here
 
@@ -14,6 +15,7 @@ export default function XrContainer(props) {
     const [orderMessage, setOrderMessage] = useState('');
     const [orderPlaced, setOrderPlaced] = useState(false);
     const [showAR, setShowAR] = useState(false); // State to handle Enter AR popup
+    const { buyItem } = useBuyItem();  // Get the buyItem function from the hook
 
     // Function to toggle between showing the Canvas and the details popup
     const toggleDetails = () => {
@@ -23,18 +25,21 @@ export default function XrContainer(props) {
     };
 
     // Function to handle the Buy button click and show toast
-    const handleBuyClick = (currency) => {
+    const handleBuyClick = async (currency) => {
         const loadingToast = toast.loading('Please wait...');
 
-        // Simulate a delay for placing the order
-        setTimeout(() => {
-            toast.dismiss(loadingToast); // Dismiss the loading toast
+        const result = await buyItem();  // Use the buyItem function
+        toast.dismiss(loadingToast); // Dismiss the loading toast
+
+        if (result) {
             setOrderMessage('Order Placed Successfully!');
             setOrderPlaced(true);
             toast.success('Order Placed');
             setXP(xp + 1);
             toast.success('Leveled UP!');
-        }, 2000); // 2 second delay to simulate order processing
+        } else {
+            toast.error('Purchase Failed');
+        }
     };
 
     // Function to render the stars based on rating
