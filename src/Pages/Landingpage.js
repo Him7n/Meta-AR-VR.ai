@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
-
+import metavid from "./landing.mp4"
 
 const Landingpage = () => {
   const navigate = useNavigate()
@@ -11,9 +11,16 @@ const Landingpage = () => {
 
   return (
     <>
+      <div className="video-container">
+        <video src={metavid} className="video-bg" autoPlay loop muted>
+          {/* Optionally, you can include text or fallback content here */}
+          Your browser does not support the video tag.
+        </video>
+        <div className="content">
 
-      <div className='h-10 text-3xl' > Hiya there ,This is the landing page :) </div>
-      <button className='bg-blue-600 text-white px-4 py-6 rounded-md text-xl' onClick={Enter} >Enter</button>
+          <button className='bg-blue-500 text-white px-9 rounded-full text-lg' onClick={Enter} >Enter  </button>
+        </div>
+      </div>
     </>
   )
 }
