@@ -18,6 +18,8 @@ import UpMenu from '../Component/UpMenu.js';
 import Authorize from '../Component/Authorize.js'; // Assuming this is the correct import
 import Cloths from '../Products/Cloths.js';
 import Showcase from './Showcase.js';
+import SelectiveRenderTeacher from '../Component/SelectiveRenderTeacher.js';
+import DoubtPanel from '../Component/DoubtPanel.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -142,11 +144,11 @@ const Enviroment = () => {
         setIsCharacterSelectVisible(true);
     };
 
-    const response = Authorize(); // Authorization check
-    if (response != null) {
-        console.log("navigate to signup");
-        // Logic to navigate to signup could be added here, if required
-    }
+    // const response = Authorize(); // Authorization check
+    // if (response != null) {
+    //     console.log("navigate to signup");
+    //     // Logic to navigate to signup could be added here, if required
+    // }
 
     return (
         <>
@@ -166,7 +168,9 @@ const Enviroment = () => {
                 <MenuOffice />
                 <MenuClass />
                 <SelectiveRender />
+                <DoubtPanel/>
                 <SelectiveRenderClass />
+                <SelectiveRenderTeacher/>
                 <UpMenu />
                 <AskaiInput />
                 <Sidebar />
@@ -179,7 +183,7 @@ const Enviroment = () => {
                     camera={{
                         fov: 45,
                         near: 0.1,
-                        far: 200,
+                        far: 100,
                         position: [2.5, 4, 6],
                     }}
                 >

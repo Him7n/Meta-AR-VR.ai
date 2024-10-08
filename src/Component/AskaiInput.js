@@ -8,7 +8,7 @@ const AskaiInput = () => {
     const [message, setMessage] = useAtom(AiMessageAtom);
 const [askai] = useAtom(AIshowatom);
 const [talkatom,setTalkAtom] = useAtom(TalkAtom)
-console.log(askai)
+// console.log(askai)
     console.log(message);
     const [messagee, setMessagee] = useState("");
     const HandleOnchange = (e) => {

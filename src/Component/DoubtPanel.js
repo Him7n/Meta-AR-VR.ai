@@ -1,27 +1,31 @@
-import React from 'react'
+import React from 'react';
 import AlertMessage from './AlertMessage';
 import { charactersAtom } from '../Socketmanager';
-import { socket } from '../Socketmanager';
 import { useAtom } from 'jotai';
 import Doubt from './Doubt';
+import { Findme } from '../Utils/Findme';
+
 const DoubtPanel = () => {
     const [characters] = useAtom(charactersAtom);
-    console.log(characters.length);
-    return (<>
-        <div className='w-auto z-10 mr-1 bg-white/0 absolute right-1 top-52' >
+    const [userRole,setRole]  = useAtom(Findme);
+    return (
+        <>
+            <div className='w-auto z-10 mr-1 bg-white/0 absolute right-1 top-52'>
+                {characters.map((character) => {
+                    if (character.doubt) {
+                        return (
+                            <AlertMessage
+                                key={character.id}
+                                _socketid={character.id}
+                            />
+                        );
+                    }
+                    return null;
+                })}
+            </div>
+            {userRole!=null && userRole.role === 'student' && <Doubt />}
+        </>
+    );
+};
 
-            {characters.map((character) => {
-
-                if (character.doubt) {
-                    return (<AlertMessage _socketid={character.id} />
-                    )
-                }
-            })}
-        </div>
-        <Doubt />
-    </>
-
-    )
-}
-
-export default DoubtPanel
+export default DoubtPanel;

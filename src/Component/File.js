@@ -14,7 +14,7 @@ const File = () => {
 
 
     // if (character.url != "") { seturl(character.url) }
-    console.log(url);
+    // console.log(url);
     const [characters] = useAtom(charactersAtom);
     if (characters[0]) {
         if (characters[0].url != "" && characters[0].url != url) {

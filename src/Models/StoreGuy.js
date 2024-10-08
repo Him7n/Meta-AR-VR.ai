@@ -20,15 +20,14 @@ const StoreGuy = () => {
 
     const animations = useAnimations(ani, model);
 
-    const idle = useFBX("./models/StoreGuy.fbx"); // Assuming you have an idle animation file for the StoreGuy as well
+    // const idle = useFBX("./models/StoreGuy.fbx"); // Assuming you have an idle animation file for the StoreGuy as well
     const talk = useFBX("./models/Talking2.fbx");
     console.log(talk);
 
-    idle.animations[0].name = 'idle';
     talk.animations[0].name = 'talk';
 
     if (ani.length < 5) {
-        ani.push(idle.animations[0]);
+        ani.push(model.animations[0]);
         ani.push(talk.animations[0]);
     }
 

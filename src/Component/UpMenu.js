@@ -24,7 +24,7 @@ const UpMenu = () => {
         z = me.position[2]
 
     }
-    console.log(x, y, z)
+    // console.log(x, y, z)
     const [up] = useAtom(GoupAtom)
     let Me = null;
     const [characters] = useAtom(charactersAtom);
@@ -45,7 +45,6 @@ const UpMenu = () => {
             ,
             z: z,
         });
-        console.log(x,y,z)
     };
 
     const handleOtherClick = () => {

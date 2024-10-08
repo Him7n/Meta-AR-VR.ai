@@ -31,9 +31,9 @@ import { PlayerXP } from './Utils/PlayerXP'
 const Player = ({ id, position, rotation, delta, aanimations }) => {
 
 // const [_up] = useAtom(upAtom)
-console.log(position)
+// console.log(position)
 const [XP] = useAtom(PlayerXP);
-console.log(XP);
+// console.log(XP);
     const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom) 
      const [clothmenu, setClothMenu] = useAtom(ClothMenuAtom);
     const DefaultCordinates2 = new THREE.Vector3(60.84252749750952, -0.9, 42.95368943309931);
@@ -203,7 +203,7 @@ console.log(XP);
 
     const ani = model.animations;
     // let aniname = ani.name;
-    console.log(ani);
+    // console.log(ani);
     const run = useFBX("./assets/character/running.fbx");
     run.animations[0].name = "run";
     const sit = useFBX("./assets/character/Sitting.fbx")
@@ -217,21 +217,21 @@ console.log(XP);
     }
     ani["run"] = run.animations[0];
     ani["sit"] = sit.animations[0];
-    console.log(ani.length, "ani ka size")
+    // console.log(ani.length, "ani ka size")
     // AAnimations.push({
     //     name: "run", clip: mixer.clipAction(run.animations[0])
     // });
     const animations = useAnimations(ani, model)
     // console.log(run.animations);
     run.animations[0].name = "run";
-    console.log(run.animations[0].name);
+    // console.log(run.animations[0].name);
     // leva
 
     //  const { animationName } = useControls({
     //     animationName: { options: animations.names }
     // })
     // leva
-    console.log(animations.actions)
+    // console.log(animations.actions)
     useEffect(() => {
         const action = animations.actions[currentAnimation]
         action
@@ -270,7 +270,7 @@ console.log(XP);
 
         const { forward, left, right, jump, back, shift } = getkeys();
         // socket.emit()
-        console.log(jump + " " + shift + " " + left + " " + right + " " + back + " " + shift);
+        // console.log(jump + " " + shift + " " + left + " " + right + " " + back + " " + shift);
 
         const impulse = { x: 0, y: 0, z: 0 }
         const torque = { x: 0, y: 0, z: 0 }
@@ -332,18 +332,18 @@ console.log(XP);
             showmenu ? setShowMenu(false) : null;
         }
 
-        if (body.current.position.distanceTo(DefaultCordinates2) <= 4 && !showClothmenu) {
-            setShowClothMenu(true);
-            setClothMenu(true); 
-        } else if (body.current.position.distanceTo(DefaultCordinates2) >4 && showClothmenu) {
-            setShowClothMenu(false);
-            setClothMenu(false);
-        }
+        // if (body.current.position.distanceTo(DefaultCordinates2) <= 4 && !showClothmenu) {
+        //     setShowClothMenu(true);
+        //     setClothMenu(true); 
+        // } else if (body.current.position.distanceTo(DefaultCordinates2) >4 && showClothmenu) {
+        //     setShowClothMenu(false);
+        //     setClothMenu(false);
+        // }
 
         // console.log(showmenu);
-        console.log(
-            clothmenu, menuAtom
-        )
+        // console.log(
+        //     clothmenu, menuAtom
+        // )
         if (!showmenu && !showClothmenu) {
             const cameraPosition = new THREE.Vector3();
             cameraPosition.copy(bodyposition);
@@ -408,7 +408,7 @@ console.log(XP);
         //     });
         // }
 
-        console.log(jump);
+        // console.log(jump);
 
 
 
