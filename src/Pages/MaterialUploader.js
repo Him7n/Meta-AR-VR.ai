@@ -1,62 +1,37 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { socket } from '../Socketmanager';
-const UploadModel = () => {
+import axios from 'axios';
+
+const MaterialUploader = () => {
     const [title, setTitle] = useState('');
     const [link, setLink] = useState('');
     const [file, setFile] = useState(null);
-    const [status, setstatus] = useState(null);
+    const [status, setStatus] = useState(null);
     const [load, setLoad] = useState(false);
 
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
-    };
-
-    const handleLinkChange = (e) => {
-        setLink(e.target.value);
-    };
-
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        setFile(selectedFile);
-    };
+    const handleTitleChange = (e) => setTitle(e.target.value);
+    const handleLinkChange = (e) => setLink(e.target.value);
+    const handleFileChange = (e) => setFile(e.target.files[0]);
 
     const handleSubmit = async () => {
-        console.log("Title:", title);
-        console.log("Link:", link);
-        console.log("File:", file);
         setLoad(true);
-        setstatus("Loading...")
-        const response = await axios.post('http://localhost:3002/api/v1/user/upload', {
-            path: link
-
-        })
-        setstatus("Posted")
-        console.log(response.data.filename)
-        const name = response.data.filename;
-        console.log(name[0])
-        console.log("hihi")
-        const url = "http://localhost:3002/" + name[0];
-        console.log(url);
-        socket.emit('model', {
-            title: title,
-            link: url
-        })
-
-
-        // Add code to handle form submission (e.g., send data to backend)
+        setStatus("Loading...");
+        const response = await axios.post('http://localhost:3002/api/v1/user/upload', { path: link });
+        setStatus("Posted");
+        const url = "http://localhost:3002/" + response.data.filename[0];
+        socket.emit("material", { title, link: url });
     };
 
     return (
-        <div className=" shadow p-4 py-8">
-            <div className="heading text-center font-bold text-2xl m-5 text-gray-800 ">Model</div>
-            <div className="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300  bg-white p-4 shadow-lg max-w-2xl">
+        <div className="shadow p-4 py-8">
+            <div className="heading text-center font-bold text-2xl m-5 text-gray-800 ">Material</div>
+            <div className="editor mx-auto w-10/12 flex flex-col text-gray-800 border bg-white border-gray-300 p-4 shadow-lg max-w-2xl">
                 <input
                     className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
                     spellCheck="false"
                     onChange={handleTitleChange}
                     value={title}
-                    placeholder="Name"
+                    placeholder="Title"
                     type="text"
                 />
                 <input
@@ -64,7 +39,7 @@ const UploadModel = () => {
                     spellCheck="false"
                     onChange={handleLinkChange}
                     value={link}
-                    placeholder="Link/.glb  "
+                    placeholder="Link"
                     type="text"
                 />
                 <div className="icons flex text-gray-500 m-2">
@@ -74,7 +49,6 @@ const UploadModel = () => {
                         </svg>
                         <input hidden type="file" onChange={handleFileChange} />
                     </label>
-                    <div className="count ml-auto text-gray-400 text-xs font-semibold">0/300</div>
                 </div>
                 <div className="buttons flex justify-end">
                     {load && <div className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">{status}</div>}
@@ -85,4 +59,4 @@ const UploadModel = () => {
     );
 };
 
-export default UploadModel;
+export default MaterialUploader;
