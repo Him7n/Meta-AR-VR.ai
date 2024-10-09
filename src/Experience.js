@@ -446,7 +446,7 @@ export default function Experience() {
         {/* <Store2 /> */}
         <StoreGuy />
         {/* <CarPodium /> */}
-        {/* <LeaderBoard /> */}
+        <LeaderBoard />
         {/* <DoubtPanel /> */}
         <Classroom />
         {/* <Mannequinn /> */}

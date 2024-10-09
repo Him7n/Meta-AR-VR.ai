@@ -22,6 +22,7 @@ import SelectiveRenderTeacher from '../Component/SelectiveRenderTeacher.js';
 import DoubtPanel from '../Component/DoubtPanel.js';
 import AttendanceManager from '../Component/AttendanceManager.js';
 import AskQuestionAlert from './AskQuestionAlert.js';
+import SelectiveRenderPresenter from '../Component/SelectiveRenderPresenter.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -175,6 +176,7 @@ const Enviroment = () => {
                 <DoubtPanel/>
                 <SelectiveRenderClass />
                 <SelectiveRenderTeacher/>
+                <SelectiveRenderPresenter/>
                 <UpMenu />
                 <AskaiInput />
                 <Sidebar />
