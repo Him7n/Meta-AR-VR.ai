@@ -1,8 +1,11 @@
 import React from 'react';
 import { socket } from '../Socketmanager';
+import { useAtom } from 'jotai';
+import { Findme } from '../Utils/Findme';
 
-const AlertMessage = ({ _socketid, userRole }) => {
-    
+const AlertMessage = ({ _socketid }) => {
+    const [userRole,setRole]  = useAtom(Findme)
+
     const HandleResolve = () => {
         if (userRole === 'teacher') {
             console.log('Resolving ', _socketid);
