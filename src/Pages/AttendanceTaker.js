@@ -31,9 +31,9 @@ const AttendanceTaker = () => {
               key={character.id}
               className="py-3 px-4 flex justify-between items-center"
             >
-              <span className="font-medium text-gray-700">{character.id}</span>
+              <span className="font-xs text-gray-700">{character.id}</span>
               <span
-                className={`px-3 py-1 rounded-full text-sm ${
+                className={`px-3 py-1 rounded-full text-xs ${
                   character.present
                     ? "bg-green-100 text-green-800"
                     : "bg-red-100 text-red-800"
