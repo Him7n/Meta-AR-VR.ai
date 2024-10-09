@@ -20,6 +20,8 @@ import Cloths from '../Products/Cloths.js';
 import Showcase from './Showcase.js';
 import SelectiveRenderTeacher from '../Component/SelectiveRenderTeacher.js';
 import DoubtPanel from '../Component/DoubtPanel.js';
+import AttendanceManager from '../Component/AttendanceManager.js';
+import AskQuestionAlert from './AskQuestionAlert.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -168,6 +170,8 @@ const Enviroment = () => {
                 <MenuOffice />
                 <MenuClass />
                 <SelectiveRender />
+                <AttendanceManager/>
+                <AskQuestionAlert/>
                 <DoubtPanel/>
                 <SelectiveRenderClass />
                 <SelectiveRenderTeacher/>

@@ -41,8 +41,6 @@ const AssignmentBox = () => {
         setstatus("Posted");
         console.log(response.data.filename);
         const name = response.data.filename;
-        console.log(name[0]);
-        console.log("hihi");
         const url = "http://localhost:3002/" + name[0];
         console.log(url);
         socket.emit("assignmentdone", {
