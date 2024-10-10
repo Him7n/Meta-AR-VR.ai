@@ -4,7 +4,7 @@ async function main() {
   const Threatre = await ethers.deployContract("Theater");
   await Threatre.waitForDeployment();
 
-  console.log("Threatre deployed to:", await Threatre.getAddress());
+  //console.log("Threatre deployed to:", await Threatre.getAddress());
 }
 
 main()

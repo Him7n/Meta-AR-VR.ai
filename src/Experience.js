@@ -79,6 +79,10 @@ import Mannequinn from "./Models/Mannequinn.js";
 import Podium from "./Models/Podium.js";
 import CarPodium from "./Models/CarPodium.js";
 import LeaderBoard from "./Iframe/LeaderBoard.js";
+import MenuConferenceHall from "./Component/MenuConferenceHall.js";
+import DistancetoConferenceHall from "./Component/DistancetoConferenceHall.js";
+import { ConferenceAtom } from "./Utils/ConferenceAtom.js";
+import { QuestMenuAtom } from "./Utils/QuestMenuAtom.js";
 THREE.ColorManagement.legacyMode = false;
 
 export default function Experience() {
@@ -99,7 +103,6 @@ export default function Experience() {
   const { gl, camera } = useThree();
   const xr = useXR();
 
-
   //-- texture
 
   const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] =
@@ -112,7 +115,7 @@ export default function Experience() {
     ]);
 
   // if (xr.isPresenting) {
-  //     console.log("XRRR is already present")
+  //     //console.log("XRRR is already present")
   //     // Update camera position in VR mode
   //     camera.position.set(character.position[0], character.position[1], character.position[2]); // Set the desired position
   //     camera.updateMatrixWorld(); // Update the camera's world matrix
@@ -161,20 +164,50 @@ export default function Experience() {
   }
   const schoolDistance = Distanceto(SchoolTarget);
   if (schoolDistance) {
-    // console.log("class reached");
-    // console.log(_classMenu);
+    // //console.log("class reached");
+    // //console.log(_classMenu);
     if (!_classMenu) {
       setClassMenu(true);
     }
   } else {
-    // console.log("class not reached");
+    // //console.log("class not reached");
     if (_classMenu) {
       setClassMenu(false);
     }
   }
 
   const arewethereyet = Distanceto(ticketTarget);
+  const [_conferenceHallMenu, setConferenceHallMenu] = useAtom(ConferenceAtom);
+  const [questMenu, setquestMenu] = useAtom(QuestMenuAtom);
+  const conferenceHallMenuTarget = [8.722359349657763, 1, -36.85858171068639];
+  const QuestMenuPosition = [48.15095791538605, -0.9, -28.19718932531559];
+  const isNearQuestMenu = Distanceto(QuestMenuPosition);
+  const isNearConferenceHallMenu = Distanceto(conferenceHallMenuTarget);
 
+  if (isNearQuestMenu) {
+    if (!questMenu) {
+      // setConferenceHallMenu(true);
+      setquestMenu(true);
+      //console.log("hallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    }
+  } else {
+    if (questMenu) {
+      // setConferenceHallMenu(false);
+      setquestMenu(false);
+      //console.log("nohallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    }
+  }
+  if (isNearConferenceHallMenu) {
+    if (!_conferenceHallMenu) {
+      setConferenceHallMenu(true);
+      //console.log("hallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    }
+  } else {
+    if (_conferenceHallMenu) {
+      setConferenceHallMenu(false);
+      //console.log("nohallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    }
+  }
   if (arewethereyet) {
     if (!_ticketMenu) {
       setTickerMenu(true);
@@ -208,9 +241,9 @@ export default function Experience() {
     }
   }
   //
-  // console.log(`my socket id ${socket.id}`)
-  // console.log(characters);
-  // console.log(characters.length);
+  // //console.log(`my socket id ${socket.id}`)
+  // //console.log(characters);
+  // //console.log(characters.length);
 
   const UP = Distanceto(upTarget);
   if (UP) {
@@ -242,6 +275,16 @@ export default function Experience() {
         <mesh castShadow position={[30, 1, -138]} scale={1.5}>
           <boxGeometry />
           <meshStandardMaterial color="mediumpurple" />
+        </mesh>
+        {/* <MenuConferenceHall /> */}
+        {/* Add a green marker at the menu coordinates */}
+        <mesh position={conferenceHallMenuTarget}>
+          <sphereGeometry args={[0.2, 32, 32]} />
+          <meshBasicMaterial color="green" />
+        </mesh>
+        <mesh position={QuestMenuPosition}>
+          <sphereGeometry args={[0.2, 32, 32]} />
+          <meshBasicMaterial color="green" />
         </mesh>
         {/* <P2/> */}
         <Shop />
@@ -442,7 +485,7 @@ export default function Experience() {
         <Gate6 />
         <Gate7 />
         <Market />
-    {/* uncomment store 2 */}
+        {/* uncomment store 2 */}
         {/* <Store2 /> */}
         <StoreGuy />
         {/* <CarPodium /> */}

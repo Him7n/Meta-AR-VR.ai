@@ -20,7 +20,7 @@ function convertWindowsPathToWSL(filePath) {
   // Convert drive letter to lowercase and replace backslashes with forward slashes
   const wslPath = filePath.replace(/^([A-Z]):\//i, (match, driveLetter) => `/mnt/${driveLetter.toLowerCase()}/`).replace(/\//g, '/');
 
-  console.log(wslPath);
+  //console.log(wslPath);
   return wslPath;
 }
 async function uploadFileWithCurl(filePath) {
@@ -30,7 +30,7 @@ async function uploadFileWithCurl(filePath) {
 
   try {
     const stdout = await execAsync(curlCommand);
-    console.log('File uploaded successfully:', stdout);
+    //console.log('File uploaded successfully:', stdout);
     return stdout;
 
   } catch (error) {

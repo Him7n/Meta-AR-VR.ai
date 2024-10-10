@@ -23,6 +23,9 @@ import DoubtPanel from '../Component/DoubtPanel.js';
 import AttendanceManager from '../Component/AttendanceManager.js';
 import AskQuestionAlert from './AskQuestionAlert.js';
 import SelectiveRenderPresenter from '../Component/SelectiveRenderPresenter.js';
+import ProfileManager from '../Component/ProfileManager.js';
+import MenuConferenceHall from '../Component/MenuConferenceHall.js';
+import QuestMenu from '../Component/QuestMenu.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -149,7 +152,7 @@ const Enviroment = () => {
 
     // const response = Authorize(); // Authorization check
     // if (response != null) {
-    //     console.log("navigate to signup");
+    //     //console.log("navigate to signup");
     //     // Logic to navigate to signup could be added here, if required
     // }
 
@@ -170,9 +173,12 @@ const Enviroment = () => {
                 <ConnectMetamask />
                 <MenuOffice />
                 <MenuClass />
+                <QuestMenu/>
                 <SelectiveRender />
                 <AttendanceManager/>
                 <AskQuestionAlert/>
+                <MenuConferenceHall/>
+                <ProfileManager/>
                 <DoubtPanel/>
                 <SelectiveRenderClass />
                 <SelectiveRenderTeacher/>

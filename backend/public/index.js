@@ -35,7 +35,7 @@ const pinFileToIPFS = async (showid,myaddress) => {
         },
       }
     );
-    console.log("File uploaded to IPFS:", res.data);
+    //console.log("File uploaded to IPFS:", res.data);
 
     const metadataObj = {
       BuyerAddress: "MY metamask address",
@@ -58,7 +58,7 @@ const pinFileToIPFS = async (showid,myaddress) => {
           },
         }
       );
-      console.log("Metadata pinned to IPFS:", metadataRes.data);
+      //console.log("Metadata pinned to IPFS:", metadataRes.data);
     } catch (error) {
       console.error("Error pinning metadata to IPFS:", error.message, JSON.stringify(error));
     }

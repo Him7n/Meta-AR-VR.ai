@@ -26,7 +26,7 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
   // Accessing varient selections element
   const varient = useRef(null);
 
-  console.log(item)
+  //console.log(item)
 
   function toggle() {
     if (!document.fullscreenElement) {
@@ -61,9 +61,9 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
     const modelViewer = model.current
     modelViewer &&
     modelViewer.addEventListener('load', () => {
-      console.log('loaded')
+      //console.log('loaded')
       const availableVariants = modelViewer?.availableVariants;
-      console.log(availableVariants)
+      //console.log(availableVariants)
       for (const variant of availableVariants) {
         const option = document.createElement('option');
         option.value = variant;

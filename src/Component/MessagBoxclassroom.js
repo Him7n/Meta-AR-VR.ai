@@ -6,7 +6,7 @@ import { Html } from '@react-three/drei';
 
 const MessageBoxclassroom = () => {
     const [message, setMessage] = useAtom(AiMessageAtom);
-    console.log(message);
+    //console.log(message);
 
     return (
         <>

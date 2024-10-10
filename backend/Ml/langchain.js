@@ -29,7 +29,7 @@ async function askai(pathtofile) {
     chunkOverlap: 200,
   });
   const splitDocs = await textSplitter.splitDocuments(docs);
-  // console.log(docs.pipe(parser));
+  // //console.log(docs.pipe(parser));
   const ip = docs[0].pageContent;
   // Initialize Gemini AI model
   const model = new ChatGoogleGenerativeAI({
@@ -61,7 +61,7 @@ async function askai(pathtofile) {
 
   const parsedResponse = outputParser.parse(res);
 
-  console.log(parsedResponse);
+  //console.log(parsedResponse);
   return parsedResponse;
 }
 

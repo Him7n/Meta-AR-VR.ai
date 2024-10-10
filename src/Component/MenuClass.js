@@ -19,7 +19,7 @@ const MenuClass = () => {
     const [show, setShow] = useState(true);
     const handleViewClick = () => {
         // Handle logic for View button click
-        console.log('Teacher');
+        //console.log('Teacher');
         setClassMenu(false);
         socket.emit("role", "teacher")
         setShow(false)
@@ -27,7 +27,7 @@ const MenuClass = () => {
 
     const handleOtherClick = () => {
         // Handle logic for Other button click
-        console.log('Student');
+        //console.log('Student');
         setClassMenu(false);
         setShow(false);
         socket.emit("role", "student")

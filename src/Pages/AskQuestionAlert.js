@@ -29,7 +29,7 @@ const AskQuestionAlert = () => {
   if (!questionData) return null;
 
   return (
-    <div className=" top-4 absolute z-40 right-4 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-4 ">
+    <div className=" top-4 absolute z-50 right-4 w-80 bg-white border border-gray-300 rounded-lg shadow-lg p-4 ">
       <h4 className="text-lg font-semibold mb-3">{questionData.question}</h4>
       <ul className="space-y-2 mb-4">
         {questionData.options.map((option, index) => (

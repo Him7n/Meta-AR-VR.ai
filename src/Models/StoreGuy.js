@@ -8,7 +8,7 @@ import { menuAtom } from '../Utils/GuildAtom';
 
 const StoreGuy = () => {
     const [showmenuAtom, setShowMenuAtom] = useAtom(menuAtom)
-        console.log(showmenuAtom);
+        //console.log(showmenuAtom);
     const [talkAtom] = useAtom(TalkAtom);
     const [talkLocal, setTalkLocal] = useState(false);
     const [showai] = useAtom(AIshowatom);
@@ -22,7 +22,7 @@ const StoreGuy = () => {
 
     // const idle = useFBX("./models/StoreGuy.fbx"); // Assuming you have an idle animation file for the StoreGuy as well
     const talk = useFBX("./models/Talking2.fbx");
-    console.log(talk);
+    //console.log(talk);
 
     talk.animations[0].name = 'talk';
 

@@ -10,10 +10,10 @@ const router = express.Router();
 
 router.use("/user", userRouter);
 router.use("/account", accountRouter);
-router.use("/student",studentRouter);
-router.use("/teacher",teacherRouter);
-router.use("/assignment",assignmentRouter);
-router.use("/submission",assignmentSubmissionRouter);
+// router.use("/student",studentRouter);
+// router.use("/teacher",teacherRouter);
+// router.use("/assignment",assignmentRouter);
+// router.use("/submission",assignmentSubmissionRouter);
 // router.use("/attendance", attendanceRouter);
 
 export default router;

@@ -16,7 +16,7 @@ const ShowModel = ({ url, onClose }) => {
         fetchModel();
     }, []);
 
-    console.log(model);
+    //console.log(model);
     const handleShow = () => {
         onClose();
     };

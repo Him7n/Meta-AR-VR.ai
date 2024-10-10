@@ -18,7 +18,7 @@ const MenuOffice = () => {
     const [show, setShow] = useState(true);
     const handleViewClick = () => {
         // Handle logic for View button click
-        console.log('View button clicked');
+        //console.log('View button clicked');
         setOfficeMenu(false);
         socket.emit("role","presenter")
         setShow(false)
@@ -26,7 +26,7 @@ const MenuOffice = () => {
 
     const handleOtherClick = () => {
         // Handle logic for Other button click
-        console.log('Other button clicked');
+        //console.log('Other button clicked');
         setOfficeMenu(false);
         setShow(false);
         socket.emit("role", "presentee")
