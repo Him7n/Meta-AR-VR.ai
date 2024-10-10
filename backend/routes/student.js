@@ -57,7 +57,7 @@ router.get('/single/:studentId', async (req, res) => {
 router.get('/getall', async (req, res) => {
     try {
         // Find all students
-        console.log("Fetching all students");
+        //console.log("Fetching all students");
         const students = await Student.find({}).populate("studentId");
 
         // Return the list of students

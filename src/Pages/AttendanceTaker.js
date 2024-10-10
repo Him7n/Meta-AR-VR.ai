@@ -6,7 +6,7 @@ const AttendanceTaker = () => {
   const [characters] = useAtom(charactersAtom);
 
   const handleTakeAttendance = () => {
-    console.log("Taking attendance");
+    //console.log("Taking attendance");
 
     socket.emit("takeAttendance");
   };

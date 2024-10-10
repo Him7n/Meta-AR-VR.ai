@@ -75,7 +75,7 @@ router.put('/:teacherId/materials', async (req, res) => {
         if (!teacher) {
             return res.status(404).json({ message: 'Teacher not found.' });
         }
-        console.log(teacher);
+        //console.log(teacher);
         // Combine existing material URLs with the new ones, ensuring no duplicates
         const addMaterialUrls = (existingUrls, newUrls) => {
             const combinedUrls = new Set([...(existingUrls || []), ...newUrls]);
@@ -85,7 +85,7 @@ router.put('/:teacherId/materials', async (req, res) => {
         // Usage
         teacher.materialUrl = addMaterialUrls(teacher.materialUrl, materialUrls);
 
-        console.log(teacher)
+        //console.log(teacher)
         // Save the updated teacher document
         const updatedTeacher = await teacher.save();
 

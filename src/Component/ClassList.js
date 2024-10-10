@@ -10,7 +10,7 @@ const ClassList = () => {
 
   const handleSendCoins = (id) => {
     // Logic to send coins
-    console.log(`Sending ${coinInput[id]} coins to ${id}`);
+    //console.log(`Sending ${coinInput[id]} coins to ${id}`);
     // Reset input field
     setCoinInput({ ...coinInput, [id]: "" });
     setShowInput({ ...showInput, [id]: false });

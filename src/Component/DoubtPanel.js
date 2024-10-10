@@ -17,13 +17,16 @@ const DoubtPanel = () => {
                             <AlertMessage
                                 key={character.id}
                                 _socketid={character.id}
+                                userRole = {userRole}
+                                message="Raised a doubt"
                             />
                         );
                     }
                     return null;
                 })}
             </div>
-            {userRole!=null && userRole.role === 'student' && <Doubt />}
+            {userRole!=null &&( userRole.role === 'student'|| userRole.role == 'presentee'
+             )&& <Doubt />}
         </>
     );
 };

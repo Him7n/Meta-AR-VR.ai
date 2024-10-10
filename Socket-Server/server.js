@@ -22,19 +22,21 @@ const generateRandomPosition = () => {
 };
 
 io.on("connection", (socket) => {
-  console.log("User connected: " + socket.id);
+  //console.log("User connected: " + socket.id);
 
   // Automatically join a room upon connection
   sockettoroom.set(socket.id, "gameRoom");
-  // console.log("User joined: " + socket.id + "gameRoom");
+  // //console.log("User joined: " + socket.id + "gameRoom");
   io.to("gameRoom").emit("NewUserJoined", socket.id);
   socket.join("gameRoom");
   io.to(socket.id).emit("joined Room", socket.id);
   socket.broadcast.emit("user-connected", socket.id);
-  console.log("sent it back to user");
-  // console.log("User joined: " + socket.id);
+  //console.log("sent it back to user");
+  // //console.log("User joined: " + socket.id);
   // Add new character to the characters array and emit 'spawn' event to all clients
   const questionAnswers = {};
+  const quests=[]
+  const eventsList = []; // Store all events
   characters.push({
     id: socket.id,
     delta: [0, 0, 0],
@@ -47,11 +49,12 @@ io.on("connection", (socket) => {
     assignments: [],
     materials: [],
     models: [],
+    events: [],
     role: " ",
   });
   io.to("gameRoom").emit("spawn", characters);
   // socket.on("user:call", ({ to, offer }) => {
-  //   console.log({ to });
+  //   //console.log({ to });
 
   //   io.to(to).emit("incomming:call", { from: socket.id, offer });
   // });
@@ -107,7 +110,7 @@ io.on("connection", (socket) => {
     }
   });
   socket.on("Doubt", (raise) => {
-    console.log("doube raised");
+    //console.log("doube raised");
     const character = characters.find(
       (character) => character.id === socket.id
     );
@@ -117,7 +120,7 @@ io.on("connection", (socket) => {
     }
   });
   socket.on("role", (role) => {
-    console.log("doube raised");
+    //console.log("doube raised");
     const character = characters.find(
       (character) => character.id === socket.id
     );
@@ -134,7 +137,7 @@ io.on("connection", (socket) => {
     }
   });
   socket.on("assignment", (assign) => {
-    console.log(assign);
+    //console.log(assign);
     characters.forEach((character) => {
       character.assignments.push({
         title: assign.title,
@@ -156,7 +159,7 @@ io.on("connection", (socket) => {
     io.to("gameRoom").emit("spawn", characters);
   });
   socket.on("model", (mod) => {
-    console.log(mod.link);
+    //console.log(mod.link);
     characters.forEach((character) => {
       character.models.push({
         title: mod.title,
@@ -166,7 +169,7 @@ io.on("connection", (socket) => {
     io.to("gameRoom").emit("spawn", characters);
   });
   socket.on("assignmentdone", (ass) => {
-    console.log(ass.link, ass.title);
+    //console.log(ass.link, ass.title);
     const character = characters.find(
       (character) => character.id === socket.id
     );
@@ -187,7 +190,7 @@ io.on("connection", (socket) => {
   });
   // attendance
   socket.on("takeAttendance", () => {
-    console.log("Taking attendance");
+    //console.log("Taking attendance");
 
     io.to("gameRoom").emit("attendanceRequest", socket.id);
   });
@@ -244,19 +247,50 @@ io.on("connection", (socket) => {
       }
     }
   });
+  // When a new event is scheduled
+  socket.on("scheduleEvent", (eventData) => {
+    // console.log("crreate evelkllllllllllllllllllllllll")
+    const { name, time, characterId } = eventData;
+    const newEvent = { name, time, attendees: [] }; // New event object
+    eventsList.push(newEvent); // Add event to the global list
+    console.log(eventsList);
+    // Emit the updated eventsList to all clients
+    io.to("gameRoom").emit("updateEvents", eventsList);
+  });
 
+  // When a character joins an event
+  socket.on("joinEvent", (data) => {
+    const { characterId, event } = data;
+
+    const character = characters.find((char) => char.id === characterId);
+    if (character) {
+      character.events.push(event); // Add event to character's events array
+      console.log(character);
+      // Emit updated character list
+      io.to("gameRoom").emit("spawn", characters);
+    }
+  });
+
+  socket.on("createQuest", (questData) => {
+    // Add the new quest to the quests array
+    quests.push(questData);
+    // Emit the updated quests array to all users in the room
+    io.to("gameRoom").emit("updateQuests", quests);
+  });
+  socket.emit("updateEvents", eventsList);
+  // Emit the updated eventsList when a new client joins
   // socket.on("peer:nego:needed", ({ to, offer }) => {
-  //   console.log("peer:nego:needed", offer);
+  //   //console.log("peer:nego:needed", offer);
   //   io.to(to).emit("peer:nego:needed", { from: socket.id, offer });
   // });
 
   // socket.on("peer:nego:done", ({ to, ans }) => {
-  //   console.log("peer:nego:done", ans);
+  //   //console.log("peer:nego:done", ans);
   //   io.to(to).emit("peer:nego:final", { from: socket.id, ans });
   // });
   // Handle disconnection
   socket.on("disconnect", () => {
-    console.log("User disconnected: " + socket.id);
+    //console.log("User disconnected: " + socket.id);
     const index = characters.findIndex(
       (character) => character.id === socket.id
     );

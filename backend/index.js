@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(currentDirectory, 'public')));
-console.log(path.join(currentDirectory, 'public'));
+//console.log(path.join(currentDirectory, 'public'));
 // API routes
 app.use("/api/v1", rootRouter);
 
@@ -26,11 +26,11 @@ mongoose
   })
   .then(() => {
     app.listen(PORT)
-    console.log("connected",PORT);
+    //console.log("connected",PORT);
   })
   .catch((err) => {
-    console.log("something went wrong")
-    console.log(err)
+    //console.log("something went wrong")
+    //console.log(err)
   })
 
   

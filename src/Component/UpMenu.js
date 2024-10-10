@@ -17,14 +17,14 @@ const UpMenu = () => {
     let z = 0;
     if (me != null) {
 
-        // console.log(me); 
-        // console.log(me.position)    
+        // //console.log(me); 
+        // //console.log(me.position)    
         x = me.position[0]
         y = me.position[1]
         z = me.position[2]
 
     }
-    // console.log(x, y, z)
+    // //console.log(x, y, z)
     const [up] = useAtom(GoupAtom)
     let Me = null;
     const [characters] = useAtom(charactersAtom);

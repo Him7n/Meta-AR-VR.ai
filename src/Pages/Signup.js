@@ -40,11 +40,11 @@ export const Signup = () => {
                 lastName,
                 password
               });
-              console.log(response.data);
+              //console.log(response.data);
               navigate("/Signin")
             } catch (err) {
 
-              console.log(err)
+              //console.log(err)
             }
           }} label={"Sign up"} />
         </div>

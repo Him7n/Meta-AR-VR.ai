@@ -3,16 +3,19 @@ import { socket } from '../Socketmanager';
 import { useAtom } from 'jotai';
 import { Findme } from '../Utils/Findme';
 
-const AlertMessage = ({ _socketid }) => {
-    const [userRole,setRole]  = useAtom(Findme)
+const AlertMessage = ({ _socketid,userRole,message }) => {
+    // const [userRole,setRole]  = useAtom(Findme)
 
     const HandleResolve = () => {
-        if (userRole === 'teacher') {
-            console.log('Resolving ', _socketid);
-            socket.emit("resolve", _socketid);
-        } else {
-            console.log('Only teachers can resolve doubts.');
+        if(userRole!=null){
+            if (userRole.role === 'teacher' || userRole.role == 'presenter') {
+                //console.log('Resolving ', _socketid);
+                socket.emit("resolve", _socketid);
+            } else {
+                //console.log('Only teachers can resolve doubts.');
+            }
         }
+       
     };
 
     return (
@@ -24,9 +27,9 @@ const AlertMessage = ({ _socketid }) => {
                 </svg>
             </div>
             <div className="text-[11px] font-light max-w-full flex-initial flex flex-row gap-1 align-middle justify-center">
-                <p className='text-[12px] font-semibold'>{_socketid}</p> raised a doubt
+                <p className='text-[12px] font-semibold'>{_socketid}</p> {message}
             </div>
-            { userRole!=null && userRole === 'teacher' && (
+            { userRole!=null &&( userRole.role === 'teacher'|| userRole.role == 'presenter' )&& (
                 <div className="flex flex-auto flex-row-reverse">
                     <button
                         id='id'

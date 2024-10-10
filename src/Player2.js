@@ -21,11 +21,11 @@ import { useState } from 'react'
 
 
 const Player2 = ({id,position,rotation,delta}) => {
-// console.log(id,position,rotation,delta);
+// //console.log(id,position,rotation,delta);
 
 
-// console.log(props.position);
-// console.log(props.delta);
+// //console.log(props.position);
+// //console.log(props.delta);
 
 
     /**
@@ -42,7 +42,7 @@ const Player2 = ({id,position,rotation,delta}) => {
 // finding me 
     const character = characters.find((character)=>{return character.id == socket.id})
 
-    // console.log(character);
+    // //console.log(character);
 /**
  * 
  * 
@@ -119,11 +119,11 @@ return dirOffest;
     // Animate it
     /*/
 */
-// console.log(model.scene);
+// //console.log(model.scene);
 // useFrame((state,delta)=>{
     
 //     // body.current.rotation = new THREE.Vector3(0,Math.PI,0);
-//     // console.log(getkeys());
+//     // //console.log(getkeys());
 
 //         const {forward,left,right,jump,back} = getkeys();
 //         // socket.emit()
@@ -155,11 +155,11 @@ return dirOffest;
 //         //   body.current.applyTorqueImpulse(torque);
         
         
-//         // console.log(keys);
+//         // //console.log(keys);
         
 //         /** Camera */
 //         // const bodyposition = body.current.translation();
-//         // console.log(bodyposition)
+//         // //console.log(bodyposition)
 //         // const cameraposition = new THREE.Vector3();
 //         // cameraposition.copy(bodyposition);
 //         // cameraposition.z += 10;
@@ -185,12 +185,12 @@ return dirOffest;
 //         smoothCamera.lerp(cameraPosition, 0.1);
 //         // state.camera.position.copy(smoothCamera)
 //         // state.camera.lookAt(TargetPosition)
-//         // console.log(bodyposition)
+//         // //console.log(bodyposition)
 //         const cameraRotation = state.camera.rotation;
 //         // body.current.rotation(0, cameraRotation.y, 0);
 //         // body.current.rotation(state.camera.rotation);
-//         // console.log(state.camera.rotation);
-//         // console.log(body.current.rotation());
+//         // //console.log(state.camera.rotation);
+//         // //console.log(body.current.rotation());
 
 //         /** */
 
@@ -202,14 +202,14 @@ return dirOffest;
 //         //offset
 //         let newdirOffset = directionoffest({forward,back,left,right});  
 
-// // console.log("newdirection offset ",newdirOffset);   
+// // //console.log("newdirection offset ",newdirOffset);   
 //         // const axis = new THREE.Vector3(0, 1, 0);
 //         //* rotating the model
 //         rotateQuaternion.setFromAxisAngle(
 //             rotateangle,AngleYcameraDirection+newdirOffset+Math.PI
 //         )
-//         // console.log(body.current);
-//         console.log(AngleYcameraDirection+newdirOffset);
+//         // //console.log(body.current);
+//         //console.log(AngleYcameraDirection+newdirOffset);
 //         // socket.emit("rotation",[AngleYcameraDirection+newdirOffset]);
 
 //         body.current.quaternion.rotateTowards(rotateQuaternion,0.2);
@@ -234,8 +234,8 @@ return dirOffest;
 // //     velocity =0;
 // // }
 
-// // console.log(walkdirection);
-// // console.log(walkdirection.x*velocity*delta);
+// // //console.log(walkdirection);
+// // //console.log(walkdirection.x*velocity*delta);
 
 // //     const movex = walkdirection.x*velocity*delta;
 // //           const movez = walkdirection.z*velocity*delta;
