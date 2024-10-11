@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
+import QuestSlider from "./QuestSlider";
 
 const Sidebar = (props) => {
   const [move, setMove] = useState(false);
@@ -132,6 +133,7 @@ const Sidebar = (props) => {
         >
           Close
         </button>
+        <QuestSlider/>
         <h2 className="text-xl mb-4">Available Quests</h2>
         <div className="space-y-4">
           <div className="bg-gray-800 p-4 rounded">

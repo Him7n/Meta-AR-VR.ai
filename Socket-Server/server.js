@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
   // //console.log("User joined: " + socket.id);
   // Add new character to the characters array and emit 'spawn' event to all clients
   const questionAnswers = {};
-  const quests=[]
+  const quests = [];
   const eventsList = []; // Store all events
   characters.push({
     id: socket.id,
@@ -270,12 +270,79 @@ io.on("connection", (socket) => {
       io.to("gameRoom").emit("spawn", characters);
     }
   });
+  // socket.on("createQuest", (questData) => {
+  //   // Add the new quest to the quests array
+  //   quests.push(questData);
+  //   // Emit the updated quests array to all users in the room
+  //   io.to("gameRoom").emit("updateQuests", quests);
 
+  //   // Emit a notification about the new quest
+  //   io.to("gameRoom").emit("questCreated", {
+  //     message: `A new quest "${questData.name}" has been created!`,
+  //     creator: questData.creator.username,
+  //   });
+  // });
   socket.on("createQuest", (questData) => {
-    // Add the new quest to the quests array
-    quests.push(questData);
-    // Emit the updated quests array to all users in the room
+    const newQuest = {
+      ...questData,
+      status: "open",
+      pendingApprovals: [],
+      participants: [],
+    };
+    quests.push(newQuest);
     io.to("gameRoom").emit("updateQuests", quests);
+    io.to("gameRoom").emit("questCreated", {
+      message: `A new quest "${newQuest.name}" has been created!`,
+      creator: newQuest.creator.username,
+    });
+  });
+  socket.on("acceptQuest", ({ questId, userId, username }) => {
+    console.log(questId,userId);
+    const quest = quests.find((q) => q.questId === questId);
+    if (quest && quest.status === "open") {
+      quest.pendingApprovals.push({ userId, username });
+      io.to(quest.creator.userId).emit("questParticipantRequest", {
+        questId,
+        questName: quest.name,
+        userId,
+        username,
+      });
+      io.to("gameRoom").emit("updateQuests", quests);
+    }
+  });
+
+  socket.on("approveParticipant", ({ questId, userId }) => {
+    const quest = quests.find((q) => q.questId === questId);
+    if (quest) {
+      const approvedParticipant = quest.pendingApprovals.find(
+        (p) => p.userId === userId
+      );
+      if (approvedParticipant) {
+        quest.pendingApprovals = quest.pendingApprovals.filter(
+          (p) => p.userId !== userId
+        );
+        quest.participants.push(approvedParticipant);
+        io.to(userId).emit("questParticipationApproved", {
+          questId,
+          questName: quest.name,
+        });
+        io.to("gameRoom").emit("updateQuests", quests);
+      }
+    }
+  });
+
+  socket.on("rejectParticipant", ({ questId, userId }) => {
+    const quest = quests.find((q) => q.questId === questId);
+    if (quest) {
+      quest.pendingApprovals = quest.pendingApprovals.filter(
+        (p) => p.userId !== userId
+      );
+      io.to(userId).emit("questParticipationRejected", {
+        questId,
+        questName: quest.name,
+      });
+      io.to("gameRoom").emit("updateQuests", quests);
+    }
   });
   socket.emit("updateEvents", eventsList);
   // Emit the updated eventsList when a new client joins
