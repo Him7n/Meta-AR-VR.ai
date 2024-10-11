@@ -83,6 +83,9 @@ import MenuConferenceHall from "./Component/MenuConferenceHall.js";
 import DistancetoConferenceHall from "./Component/DistancetoConferenceHall.js";
 import { ConferenceAtom } from "./Utils/ConferenceAtom.js";
 import { QuestMenuAtom } from "./Utils/QuestMenuAtom.js";
+import NewsIframe from "./Component/NewsIframe.js";
+import MusicIframe from "./Component/MusicIFrame.js";
+import RankBoard from "./Component/RankBoard.js";
 THREE.ColorManagement.legacyMode = false;
 
 export default function Experience() {
@@ -274,6 +277,7 @@ export default function Experience() {
         {/* <Player/> */}
         <mesh castShadow position={[30, 1, -138]} scale={1.5}>
           <boxGeometry />
+          
           <meshStandardMaterial color="mediumpurple" />
         </mesh>
         {/* <MenuConferenceHall /> */}
@@ -494,6 +498,9 @@ export default function Experience() {
         <Classroom />
         {/* <Mannequinn /> */}
         {/* <Presentationiframe / */}
+        <NewsIframe/>
+        <MusicIframe/>
+        <RankBoard/>
         <Banner />
         <FileSchool />
         {/* <Podium /> */}

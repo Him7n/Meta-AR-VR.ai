@@ -26,6 +26,7 @@ import SelectiveRenderPresenter from '../Component/SelectiveRenderPresenter.js';
 import ProfileManager from '../Component/ProfileManager.js';
 import MenuConferenceHall from '../Component/MenuConferenceHall.js';
 import QuestMenu from '../Component/QuestMenu.js';
+import QuestNotification from '../Component/QuestNotification.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -177,6 +178,7 @@ const Enviroment = () => {
                 <SelectiveRender />
                 <AttendanceManager/>
                 <AskQuestionAlert/>
+                <QuestNotification/>
                 <MenuConferenceHall/>
                 <ProfileManager/>
                 <DoubtPanel/>

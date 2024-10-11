@@ -100,8 +100,8 @@ const QuestMenu = () => {
         };
         socket.emit('createQuest', newQuest); // Emit event to server
         setCustomQuestForm(false); // Hide form after submission
-        setquestMenu(false);
-        setShow(false);
+        // setquestMenu(false);
+        // setShow(false);
         setQuestData({
             name: '',
             description: '',
