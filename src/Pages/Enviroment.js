@@ -190,7 +190,7 @@ const Enviroment = () => {
                 <SelectiveRenderTeacher/>
                 <SelectiveRenderPresenter/>
                 <UpMenu />
-                <AskaiInput />
+                <AskaiInput/>
                 <Sidebar />
                 <Products />
                 <GlobalChatButton/>
