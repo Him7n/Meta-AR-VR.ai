@@ -86,6 +86,7 @@ import { QuestMenuAtom } from "./Utils/QuestMenuAtom.js";
 import NewsIframe from "./Component/NewsIframe.js";
 import MusicIframe from "./Component/MusicIFrame.js";
 import RankBoard from "./Component/RankBoard.js";
+import { ModSimulator } from "./Component/ModSimulator.js";
 THREE.ColorManagement.legacyMode = false;
 
 export default function Experience() {
@@ -277,7 +278,7 @@ export default function Experience() {
         {/* <Player/> */}
         <mesh castShadow position={[30, 1, -138]} scale={1.5}>
           <boxGeometry />
-          
+
           <meshStandardMaterial color="mediumpurple" />
         </mesh>
         {/* <MenuConferenceHall /> */}
@@ -466,7 +467,16 @@ export default function Experience() {
           <planeGeometry />
           <meshNormalMaterial />
         </mesh>
+        {/* MOD Simulator */}
+        <mesh
+          position={[69.09446812858943, -0.9, 69.54155750089913]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <planeGeometry args={[0.5, 0.5]} />
+          <meshBasicMaterial color="violet"  />
+        </mesh>
         <Office />
+        <ModSimulator/>
         <Venue />
         <VenueFile />
         <ProcessML />
@@ -498,9 +508,9 @@ export default function Experience() {
         <Classroom />
         {/* <Mannequinn /> */}
         {/* <Presentationiframe / */}
-        <NewsIframe/>
-        <MusicIframe/>
-        <RankBoard/>
+        <NewsIframe />
+        <MusicIframe />
+        <RankBoard />
         <Banner />
         <FileSchool />
         {/* <Podium /> */}
