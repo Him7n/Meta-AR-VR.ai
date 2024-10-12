@@ -27,6 +27,7 @@ import ProfileManager from '../Component/ProfileManager.js';
 import MenuConferenceHall from '../Component/MenuConferenceHall.js';
 import QuestMenu from '../Component/QuestMenu.js';
 import QuestNotification from '../Component/QuestNotification.js';
+import ConnectAptos from './ConnectAptos.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -175,6 +176,7 @@ const Enviroment = () => {
                 <MenuOffice />
                 <MenuClass />
                 <QuestMenu/>
+                <ConnectAptos/>
                 <SelectiveRender />
                 <AttendanceManager/>
                 <AskQuestionAlert/>
@@ -189,8 +191,8 @@ const Enviroment = () => {
                 <AskaiInput />
                 <Sidebar />
                 <Products />
-                <Showcase/>
-                <Cloths/>
+                {/* <Showcase/> */}
+                {/* <Cloths/> */}
                 <VRButton />
                 <Canvas
                     shadows

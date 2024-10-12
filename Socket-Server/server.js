@@ -35,6 +35,7 @@ io.on("connection", (socket) => {
   // //console.log("User joined: " + socket.id);
   // Add new character to the characters array and emit 'spawn' event to all clients
   const questionAnswers = {};
+  const classes = [];
   const quests = [];
   const eventsList = []; // Store all events
   characters.push({
@@ -297,7 +298,7 @@ io.on("connection", (socket) => {
     });
   });
   socket.on("acceptQuest", ({ questId, userId, username }) => {
-    console.log(questId,userId);
+    console.log(questId, userId);
     const quest = quests.find((q) => q.questId === questId);
     if (quest && quest.status === "open") {
       quest.pendingApprovals.push({ userId, username });
@@ -344,6 +345,53 @@ io.on("connection", (socket) => {
       io.to("gameRoom").emit("updateQuests", quests);
     }
   });
+
+  // socket.on("createClass", (newClass) => {
+  //   console.log("New class created:", newClass);
+
+  //   classes.push(newClass);
+
+  //   io.emit("updateClasses", classes); // Broadcast updated classes to all clients
+  // });
+
+  // // New event handler for joining a class
+
+  // socket.on("joinClass", ({ studentId, class: updatedClass }) => {
+  //   console.log(`Student ${studentId} joined class:`, updatedClass);
+
+  //   const classIndex = classes.findIndex((c) => c.name === updatedClass.name);
+
+  //   if (classIndex !== -1) {
+  //     classes[classIndex] = updatedClass;
+
+  //     io.emit("updateClasses", classes); // Broadcast updated classes to all clients
+  //   }
+  // });
+
+  socket.on('createClass', (newClass) => {
+console.log("new Class Created",newClass);
+    classes.push(newClass);
+
+    io.to("gameRoom").emit('updateClasses', classes);
+
+});
+
+
+// Listen for joining a class
+
+socket.on('joinClass', ({ characterId, class: updatedClass }) => {
+
+    const classIndex = classes.findIndex(c => c.name === updatedClass.name);
+
+    if (classIndex !== -1) {
+
+        classes[classIndex] = updatedClass;
+
+        io.to("gameRoom").emit('updateClasses', classes);
+
+    }
+
+});
   socket.emit("updateEvents", eventsList);
   // Emit the updated eventsList when a new client joins
   // socket.on("peer:nego:needed", ({ to, offer }) => {
