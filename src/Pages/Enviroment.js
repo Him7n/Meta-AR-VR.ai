@@ -28,6 +28,8 @@ import MenuConferenceHall from '../Component/MenuConferenceHall.js';
 import QuestMenu from '../Component/QuestMenu.js';
 import QuestNotification from '../Component/QuestNotification.js';
 import ConnectAptos from './ConnectAptos.js';
+import GlobalChat from '../Component/GlobalChat.js';
+import GlobalChatButton from '../Component/GlobalChatButton.js';
 
 const Loader = ({ onLoaded }) => {
     const { progress, item, loaded, total } = useProgress();
@@ -191,6 +193,8 @@ const Enviroment = () => {
                 <AskaiInput />
                 <Sidebar />
                 <Products />
+                <GlobalChatButton/>
+                {/* <GlobalChat/> */}
                 {/* <Showcase/> */}
                 {/* <Cloths/> */}
                 <VRButton />
