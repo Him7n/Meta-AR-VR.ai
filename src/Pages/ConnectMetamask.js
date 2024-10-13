@@ -238,6 +238,7 @@ const BuyItem = async () => {
         }, 3000);
         fetchContractData(contract);
     }
+    
 
 
     return (<>

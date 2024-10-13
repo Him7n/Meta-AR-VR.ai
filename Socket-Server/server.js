@@ -45,6 +45,7 @@ io.on("connection", (socket) => {
     rotation: 0,
     avatar: 0,
     animation: "",
+    accountAddress:"",
     url: "",
     doubt: false,
     position: generateRandomPosition(),
@@ -400,7 +401,17 @@ io.on("connection", (socket) => {
   });
 
   // Listen for joining a class
+  socket.on("setAccountAddress", (address) => {
+    const character = characters.find((c) => c.id === socket.id);
 
+    if (character) {
+      character.accountAddress = address;
+
+      // Notify all clients about the updated character
+
+      io.to("gameRoom").emit("characterUpdated", character);
+    }
+  });
   socket.on("joinClass", ({ characterId, class: updatedClass }) => {
     const classIndex = classes.findIndex((c) => c.name === updatedClass.name);
 
