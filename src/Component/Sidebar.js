@@ -133,7 +133,7 @@ const Sidebar = (props) => {
         >
           Close
         </button>
-        <QuestSlider/>
+        <QuestSlider />
         <h2 className="text-xl mb-4">Available Quests</h2>
         <div className="space-y-4">
           <div className="bg-gray-800 p-4 rounded">
@@ -224,28 +224,36 @@ const Sidebar = (props) => {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-gray-800 p-4 rounded">
             <img
-              src="/inventory/Blackfrock.png"
+              src="/inventory/car.png"
               alt="Black Frock"
               className="w-full h-auto"
             />
-            <p className="text-sm mt-2">Black Frock</p>
+            <p className="text-sm mt-2">Car</p>
           </div>
           <div className="bg-gray-800 p-4 rounded">
+            <img
+              src="/inventory/SheenChair.png"
+              alt="Black Frock"
+              className="w-full h-auto"
+            />
+            <p className="text-sm mt-2">Sheen Chair</p>
+          </div>
+          {/* <div className="bg-gray-800 p-4 rounded">
             <img
               src="/inventory/GreenShirt.png"
               alt="Green Shirt"
               className="w-full h-auto"
             />
             <p className="text-sm mt-2">Green Shirt</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded">
+          </div> */}
+          {/* <div className="bg-gray-800 p-4 rounded">
             <img
               src="/inventory/WhiteTshirt.png"
               alt="White T-Shirt"
               className="w-full h-auto"
             />
             <p className="text-sm mt-2">White T-Shirt</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
